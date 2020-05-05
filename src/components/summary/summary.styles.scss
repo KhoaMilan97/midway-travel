@@ -1,0 +1,13 @@
+* {
+  word-wrap: break-word !important;
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+
+  td {
+    max-width: 100% !important;
+    word-break: break-all !important;
+  }
+}

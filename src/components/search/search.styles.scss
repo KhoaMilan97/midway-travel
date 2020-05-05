@@ -1,0 +1,44 @@
+.box {
+  & select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border: solid 1px #ccc;
+    height: 40px;
+    font-weight: normal !important;
+    border-radius: 3px !important;
+
+    padding-left: 10px;
+  }
+}
+
+.react-datepicker-wrapper {
+  display: block;
+}
+
+#search_container {
+  background: #4d536d url(/img/slides/slide_home_6.jpg) no-repeat center top !important;
+}
+
+.react-datepicker__close-icon::after {
+  cursor: pointer;
+  background-color: transparent;
+  color: #ccc;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  padding: 2px;
+  font-size: 30px;
+  line-height: 1;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  content: "\00d7";
+}
+.react-datepicker__close-icon:hover::after {
+  color: #999999;
+}

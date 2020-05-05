@@ -1,0 +1,7 @@
+const tourTypes = {
+  GET_TOURS_START: "GET_TOURS_START",
+  GET_TOURS_SUCCESS: "GET_TOURS_SUCCESS",
+  GET_TOURS_FAILURE: "GET_TOURS_FAILURE"
+};
+
+export default tourTypes;

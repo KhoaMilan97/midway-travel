@@ -1,0 +1,34 @@
+header button.cmn-toggle-switch {
+  background-color: transparent !important;
+}
+
+.layer-is-visible {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 991px) {
+  button#close_in {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent !important;
+    border: none;
+  }
+
+  .layer-is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #logo_home h1 a {
+    background-image: url(/img/logo_midway.png);
+  }
+
+  header.sticky #logo_home h1 a {
+    background-image: url(/img/logo_midway_sticky.png);
+  }
+}
