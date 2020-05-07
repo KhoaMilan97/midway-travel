@@ -13,6 +13,7 @@ import { getReviewStart } from "../../redux/review/review.action";
 import Gallery from "../../components/gallerry/gallery.components";
 import Review from "../../components/review/review.components";
 import ReviewItem from "../../components/review-item/review-item.components";
+import SignInPopUp from "../../components/sign-in-popup/sign-in-popup.components";
 
 import { formatPrice } from "../../util/formatPrice";
 
@@ -228,7 +229,7 @@ class TourDetails extends React.Component {
                       <Review />
                     ) : (
                       <span>
-                        Bạn cần <Link to="/sign-in">Đăng nhập</Link> để nhận xét
+                        Bạn cần <SignInPopUp /> <br /> để nhận xét
                       </span>
                     )}
                   </div>

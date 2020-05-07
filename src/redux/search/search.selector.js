@@ -13,5 +13,7 @@ export const selectSearchLoading = createSelector(
 );
 
 export const selectSearchTour = createSelector([selectSearchResult], (tour) =>
-  Object.keys(tour).map((item) => tour[item])
+  Object.keys(tour)
+    .map((item) => tour[item])
+    .filter((tour) => tour.status2 === 1)
 );

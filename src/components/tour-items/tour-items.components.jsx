@@ -2,7 +2,6 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import useRating from "../../util/useRating";
-
 import { linkImage } from "../../util/linkImage";
 
 import "./tour-items.styles.scss";

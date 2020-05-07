@@ -70,7 +70,7 @@ const App = ({ currentUser, checkUserSession }) => {
               currentUser ? (
                 <Redirect to="/" />
               ) : (
-                <SignIn title="Midway - Đăng nhập" />
+                <SignIn title="Midway - Đăng nhập" auth={currentUser} />
               )
             }
           />

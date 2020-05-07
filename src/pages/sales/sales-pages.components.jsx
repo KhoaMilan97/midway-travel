@@ -19,7 +19,7 @@ const SalePages = ({ title, tours, typeTours, getTourStart }) => {
   useEffect(() => {
     document.title = title;
     getTourStart();
-  }, [title]);
+  }, [title, getTourStart]);
 
   const handlePageChange = (pageNumber) => {
     console.log(pageNumber);

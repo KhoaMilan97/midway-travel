@@ -11,7 +11,7 @@ import { dataDestination } from "./data-search";
 import "react-datepicker/dist/react-datepicker.css";
 import "./search.styles.scss";
 
-const SearchPages = ({ searchTourStart, history }) => {
+const SearchPages = ({ searchTourStart, history, match }) => {
   let getSearch = localStorage.getItem("search");
   let datelocal;
   let dataSearch;
@@ -102,7 +102,12 @@ const SearchPages = ({ searchTourStart, history }) => {
         date: formatDate(date),
         price: priceValue,
       });
-      history.push("/search-result");
+
+      if (match.path === "/search-result") {
+        return;
+      } else {
+        history.push("/search-result");
+      }
     }
   };
 
