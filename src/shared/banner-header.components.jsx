@@ -13,6 +13,7 @@ const BannerHeader = ({ title, content }) => (
       height: "470",
       backgroundPosition: "center center",
       backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
     }}
   >
     <div className="parallax-content-1">

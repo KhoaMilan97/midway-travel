@@ -88,8 +88,10 @@ class TourDetails extends React.Component {
         name: toursDetails.tour_name,
         price: totalPriceSales,
       };
-      addCartItems(cartItems);
-      history.push("/checkout");
+      if (cartItems.children > 0 || cartItems.adult > 0) {
+        addCartItems(cartItems);
+        history.push("/checkout");
+      }
     }
   };
 

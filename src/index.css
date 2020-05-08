@@ -13,5 +13,9 @@ code {
 }
 
 #hero {
+  z-index: 7;
+}
+
+.layer {
   z-index: 8;
 }

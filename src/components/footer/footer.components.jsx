@@ -8,12 +8,12 @@ const Footer = () => (
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <h3>Cần giúp đỡ?</h3>
+            <h3>Liên hệ với chúng tôi</h3>
             <a href="tel://0985007449" id="phone">
               +84 985 007 449
             </a>
-            <a href="mailto:khoamilan123@gmail.com" id="email_footer">
-              khoamilan123@gmail.com.com
+            <a href="mailto:mwtravel.sp@gmail.com" id="email_footer">
+              mwtravel.sp@gmail.com
             </a>
           </div>
           <div className="col-md-2">
@@ -24,11 +24,13 @@ const Footer = () => (
               </li>
 
               <li>
-                <Link to="/tour">Tất cả Tour</Link>
-              </li>
-
-              <li>
                 <Link to="/contact">Liên hệ</Link>
+              </li>
+              <li>
+                <Link to="/sign-in">Đăng nhập</Link>
+              </li>
+              <li>
+                <Link to="/sign-up">Đăng Kí</Link>
               </li>
             </ul>
           </div>
@@ -43,6 +45,12 @@ const Footer = () => (
               </li>
               <li>
                 <Link to="/tours/tour-mien-nam/3">Tour miền Nam</Link>
+              </li>
+              <li>
+                <Link to="/sale-off">Tour giảm giá</Link>
+              </li>
+              <li>
+                <Link to="/tour">Tất cả Tour</Link>
               </li>
             </ul>
           </div>

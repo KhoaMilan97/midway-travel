@@ -29,6 +29,7 @@ export function* bookToursStart({ payload }) {
       mobile: phoneNumber,
       date: date,
       time: time,
+      status4: 0,
     });
     yield put(bookToursSuccess());
   } catch (err) {

@@ -74,11 +74,7 @@ class Header extends React.Component {
                         Liên hệ
                       </Link>
                     </li>
-                    <li className="submenu">
-                      <Link to="/" className="show-submenu">
-                        Tin tức
-                      </Link>
-                    </li>
+
                     <li>
                       {currentUser ? (
                         <div>
