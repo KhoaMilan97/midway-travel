@@ -18,7 +18,13 @@ import {
 import "../../pages/sign-in/sign-in.styles.scss";
 import "./sign-in-popup.styles.scss";
 
-const SignInPopUp = ({ signInWithEmail, googleSignInStart, loading }) => {
+const SignInPopUp = ({
+  signInWithEmail,
+  googleSignInStart,
+  loading,
+  styles,
+  title,
+}) => {
   const [show, setShow] = useState(false);
   const [signInPopup, setSignInPopup] = useState({
     email: "",
@@ -45,8 +51,12 @@ const SignInPopUp = ({ signInWithEmail, googleSignInStart, loading }) => {
 
   return (
     <>
-      <Button className="text-alert sign-in-with-popup" onClick={handleShow}>
-        Đăng nhập
+      <Button
+        className="text-alert sign-in-with-popup"
+        onClick={handleShow}
+        style={styles}
+      >
+        {title}
       </Button>
       <Modal
         show={show}

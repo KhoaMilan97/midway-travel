@@ -41,7 +41,7 @@ class ContactPages extends React.Component {
                     <strong>
                       <i className="icon-pencil" />
                     </strong>
-                    Vui long điền vào mẫu bên dưới
+                    Vui lòng điền vào mẫu bên dưới
                   </h3>
                   <p>Chúng tôi sẽ phản hồi bạn sớm nhất có thể.</p>
                 </div>
@@ -159,7 +159,7 @@ class ContactPages extends React.Component {
                   <ul id="contact-info">
                     <li>+ 84 96 3232 864 / + 84 985 007 449</li>
                     <li>
-                      <a href="!#">khoamilan123@gmail.com</a>
+                      <a href="!#">mwtravel.sp@gmail.com</a>
                     </li>
                   </ul>
                 </div>

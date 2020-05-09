@@ -19,6 +19,8 @@ import {
   emailNotFound,
 } from "../../util/checkValidate.components";
 
+import "./forget-password.styles.scss";
+
 class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
@@ -92,7 +94,7 @@ class ForgotPassword extends React.Component {
                     }}
                   >
                     <div className="form-group">
-                      <label>Email</label>
+                      <label>Vui lòng xác nhận email đăng nhập bên dưới</label>
                       <Input
                         type="text"
                         name="email"
@@ -102,7 +104,12 @@ class ForgotPassword extends React.Component {
                         onChange={this.onChangeHandler}
                         validations={[required, email, emailNotFound]}
                       />
+                      <i className="icon_mail_alt" />
                     </div>
+                    <p>
+                      Bạn sẽ nhận một email chứa liên kết cho phép bạn cập nhật
+                      lại mật khẩu.
+                    </p>
                     <button type="submit" className="btn_full">
                       {loading ? "Đang gửi email..." : "Gửi email"}
                     </button>
@@ -122,6 +129,32 @@ class ForgotPassword extends React.Component {
       </React.Fragment>
     );
   }
+}
+
+{
+  /* <div id="forgot_pw">
+                <div className="form-group">
+                  <label>Please confirm login email below</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    name="email_forgot"
+                    id="email_forgot"
+                  />
+                  <i className="icon_mail_alt" />
+                </div>
+                <p>
+                  You will receive an email containing a link allowing you to
+                  reset your password to a new preferred one.
+                </p>
+                <div className="text-center">
+                  <input
+                    type="submit"
+                    defaultValue="Reset Password"
+                    className="btn_1"
+                  />
+                </div>
+              </div> */
 }
 
 const mapStateToProps = createStructuredSelector({

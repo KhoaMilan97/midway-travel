@@ -24,7 +24,7 @@ class TourDetails extends React.Component {
   state = {
     date: new Date(),
     time: new Date(),
-    adult: 0,
+    adult: 1,
     children: 0,
     price: 0,
   };
@@ -60,6 +60,10 @@ class TourDetails extends React.Component {
     const priceAdult =
       promotion_price > 0 ? priceSalesBook * 0.2 : tour_price * 0.2;
     const totalPriceSales = promotion_price > 0 ? priceSalesBook : tour_price;
+    const totalCostPrice =
+      adult === 1
+        ? children * priceChildren + totalPriceSales
+        : (adult - 1) * priceAdult + children * priceChildren + totalPriceSales;
 
     /* Convert date to mysql date can accpet */
     function formatDate(date1) {
@@ -83,8 +87,7 @@ class TourDetails extends React.Component {
         time: time.toLocaleTimeString(),
         adult,
         children,
-        totalCost:
-          adult * priceAdult + children * priceChildren + totalPriceSales,
+        totalCost: totalCostPrice,
         name: toursDetails.tour_name,
         price: totalPriceSales,
       };
@@ -123,7 +126,7 @@ class TourDetails extends React.Component {
         });
         break;
       case "adult":
-        if (this.state.adult <= 0) {
+        if (this.state.adult <= 1) {
           return;
         }
         this.setState({
@@ -150,9 +153,17 @@ class TourDetails extends React.Component {
     const priceSalesVND = formatPrice(priceSales);
     const tourPriceVND = formatPrice(tour_price);
     let totalPrice =
-      adult * (tour_price * 0.2) + children * (tour_price * 0.1) + tour_price;
+      adult === 1
+        ? children * (tour_price * 0.1) + tour_price
+        : (adult - 1) * (tour_price * 0.2) +
+          children * (tour_price * 0.1) +
+          tour_price;
     let totalPriceSale =
-      adult * (priceSales * 0.2) + children * (priceSales * 0.1) + priceSales;
+      adult === 1
+        ? children * (priceSales * 0.1) + priceSales
+        : (adult - 1) * (priceSales * 0.2) +
+          children * (priceSales * 0.1) +
+          priceSales;
     const totalPriceVND = formatPrice(totalPrice);
     const totalPriceSaleVND = formatPrice(totalPriceSale);
 
@@ -171,6 +182,7 @@ class TourDetails extends React.Component {
             height: "470",
             backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
           }}
         >
           <div className="parallax-content-2">
@@ -231,7 +243,8 @@ class TourDetails extends React.Component {
                       <Review />
                     ) : (
                       <span>
-                        Bạn cần <SignInPopUp /> <br /> để nhận xét
+                        Bạn cần <SignInPopUp title="Đăng nhập" /> <br /> để nhận
+                        xét
                       </span>
                     )}
                   </div>
@@ -368,9 +381,27 @@ class TourDetails extends React.Component {
                       </tr>
                     </tbody>
                   </table>
-                  <button className="btn_full" onClick={this.handleClick}>
-                    Đặt tour
-                  </button>
+                  {currentUser ? (
+                    <button className="btn_full" onClick={this.handleClick}>
+                      Đặt tour
+                    </button>
+                  ) : (
+                    <SignInPopUp
+                      styles={{
+                        color: "#fff",
+                        width: "100%",
+                        background: "#008489",
+                        cursor: "pointer",
+                        padding: "12px 20px",
+                        fontSize: "12px",
+                        textTransform: "uppercase",
+                        display: "block",
+                        textAlign: "center",
+                        fontWeight: "bold",
+                      }}
+                      title="Đặt ngay"
+                    />
+                  )}
                 </div>
                 {/*/box_style_1 */}
               </aside>

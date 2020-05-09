@@ -65,6 +65,10 @@ class Confirmation extends React.Component {
                       <i className="icon-ok" />
                     </strong>
                     Cảm ơn bạn!
+                    <p>
+                      Đặt tour thành công. Chúng tôi đã gửi xác nhận đến email
+                      của bạn. Vui lòng kiểm tra
+                    </p>
                   </h3>
                 </div>
                 <div className="step">
@@ -97,6 +101,10 @@ class Confirmation extends React.Component {
                 <div className="box_style_1">
                   <h3 className="inner">Cảm ơn!</h3>
                   <p>Cảm ơn quý khách đã đặt tour tại Midway</p>
+                  <hr />
+                  <Link to="/" className="btn_full_outline">
+                    Tiếp tục mua hàng
+                  </Link>
                 </div>
                 <div className="box_style_4">
                   <i className="icon_set_1_icon-89" />

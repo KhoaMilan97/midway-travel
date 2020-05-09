@@ -50,7 +50,7 @@ const Footer = () => (
                 <Link to="/sale-off">Tour giảm giá</Link>
               </li>
               <li>
-                <Link to="/tour">Tất cả Tour</Link>
+                <Link to="/tours">Tất cả Tour</Link>
               </li>
             </ul>
           </div>
