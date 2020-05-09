@@ -14,3 +14,7 @@
 tr td {
   white-space: pre !important;
 }
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link, Redirect } from "react-router-dom";
-import DatePicker from "react-datepicker";
+
 import { Markup } from "interweave";
 
 import { selectTourDetails } from "../../redux/tour/tour.selector";
@@ -17,13 +17,10 @@ import SignInPopUp from "../../components/sign-in-popup/sign-in-popup.components
 
 import { formatPrice } from "../../util/formatPrice";
 
-import "react-datepicker/dist/react-datepicker.css";
 import "./tour-details.styles.scss";
 
 class TourDetails extends React.Component {
   state = {
-    date: new Date(),
-    time: new Date(),
     adult: 1,
     children: 0,
     price: 0,
@@ -37,9 +34,6 @@ class TourDetails extends React.Component {
     }
   }
 
-  onChange = (date) => this.setState({ date });
-  onTimeChange = (time) => this.setState({ time });
-
   handleClick = (e) => {
     e.preventDefault();
 
@@ -51,8 +45,13 @@ class TourDetails extends React.Component {
       toursDetails,
     } = this.props;
 
-    const { date, time, adult, children } = this.state;
-    const { tour_price, promotion_price } = toursDetails;
+    const { adult, children } = this.state;
+    const {
+      tour_price,
+      promotion_price,
+      date_of_departure,
+      time,
+    } = toursDetails;
     let priceSalesBook = tour_price - tour_price * promotion_price;
 
     const priceChildren =
@@ -66,32 +65,32 @@ class TourDetails extends React.Component {
         : (adult - 1) * priceAdult + children * priceChildren + totalPriceSales;
 
     /* Convert date to mysql date can accpet */
-    function formatDate(date1) {
-      return (
-        date1.getFullYear() +
-        "-" +
-        (date1.getMonth() < 9 ? "0" : "") +
-        (date1.getMonth() + 1) +
-        "-" +
-        (date1.getDate() < 10 ? "0" : "") +
-        date1.getDate()
-      );
-    }
+    // function formatDate(date1) {
+    //   return (
+    //     date1.getFullYear() +
+    //     "-" +
+    //     (date1.getMonth() < 9 ? "0" : "") +
+    //     (date1.getMonth() + 1) +
+    //     "-" +
+    //     (date1.getDate() < 10 ? "0" : "") +
+    //     date1.getDate()
+    //   );
+    // }
 
     if (!currentUser) {
       history.push("/sign-in");
     } else {
       const cartItems = {
         id: parseInt(match.params.id),
-        date: formatDate(date),
-        time: time.toLocaleTimeString(),
+        date: date_of_departure,
+        time,
         adult,
         children,
         totalCost: totalCostPrice,
         name: toursDetails.tour_name,
         price: totalPriceSales,
       };
-      if (cartItems.children > 0 || cartItems.adult > 0) {
+      if (cartItems.children >= 0 && cartItems.adult >= 1) {
         addCartItems(cartItems);
         history.push("/checkout");
       }
@@ -148,7 +147,12 @@ class TourDetails extends React.Component {
   render() {
     const { toursDetails, currentUser, review } = this.props;
     const { adult, children } = this.state;
-    const { tour_price, promotion_price } = toursDetails;
+    const {
+      tour_price,
+      promotion_price,
+      date_of_departure,
+      time,
+    } = toursDetails;
     let priceSales = tour_price - tour_price * promotion_price;
     const priceSalesVND = formatPrice(priceSales);
     const tourPriceVND = formatPrice(tour_price);
@@ -269,12 +273,13 @@ class TourDetails extends React.Component {
                       <div className="form-group">
                         <label>
                           <i className="icon-calendar-7" /> Ngày đi
-                        </label>
-                        <DatePicker
-                          selected={this.state.date}
-                          minDate={new Date()}
-                          onChange={this.onChange}
+                        </label>{" "}
+                        <br />
+                        <input
+                          type="text"
+                          value={date_of_departure}
                           className="date-pick form-control"
+                          disabled
                         />
                       </div>
                     </div>
@@ -283,15 +288,11 @@ class TourDetails extends React.Component {
                         <label>
                           <i className=" icon-clock" /> Giờ đi
                         </label>
-                        <DatePicker
-                          selected={this.state.time}
-                          onChange={(time) => this.onTimeChange(time)}
-                          showTimeSelect
-                          showTimeSelectOnly
-                          timeIntervals={15}
-                          timeCaption="Time"
-                          dateFormat="h:mm aa"
+                        <input
+                          type="text"
+                          value={time}
                           className="time-pick form-control"
+                          disabled
                         />
                       </div>
                     </div>

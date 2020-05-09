@@ -14,6 +14,8 @@ import Scroll from "./components/scrol/scroll.components";
 import Loading from "./components/loading/loading.components";
 // import SearchBoxV2 from "./components/search-v2/search-v2.components";
 
+import "./App.css";
+
 const HomePages = lazy(() => import("./pages/homepages/homepages.components"));
 const About = lazy(() => import("./pages/about/about.component"));
 const SignIn = lazy(() => import("./pages/sign-in/sign-in.components"));

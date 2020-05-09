@@ -320,9 +320,9 @@ const About = ({ title }) => {
                   <span>3</span>Đón khách tại trụ sở chính
                 </li>
               </ul>
-              <a href="all_tour_list.html" className="btn_1">
+              <Link to="/tours" className="btn_1">
                 Đi ngay
-              </a>
+              </Link>
             </div>
           </div>
           {/* End row */}
