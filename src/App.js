@@ -45,7 +45,7 @@ const App = ({ currentUser, checkUserSession }) => {
     checkUserSession();
     setTimeout(function () {
       setLoading(false);
-    }, 3000);
+    }, 2500);
   }, [checkUserSession]);
 
   if (loading) {

@@ -131,32 +131,6 @@ class ForgotPassword extends React.Component {
   }
 }
 
-{
-  /* <div id="forgot_pw">
-                <div className="form-group">
-                  <label>Please confirm login email below</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    name="email_forgot"
-                    id="email_forgot"
-                  />
-                  <i className="icon_mail_alt" />
-                </div>
-                <p>
-                  You will receive an email containing a link allowing you to
-                  reset your password to a new preferred one.
-                </p>
-                <div className="text-center">
-                  <input
-                    type="submit"
-                    defaultValue="Reset Password"
-                    className="btn_1"
-                  />
-                </div>
-              </div> */
-}
-
 const mapStateToProps = createStructuredSelector({
   loading: selectRecoverLoading,
   error: selectRecoverError,

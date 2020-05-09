@@ -1,23 +1,70 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import API from "../../api/baseURL";
 
 import BannerHeader from "../../shared/banner-header.components";
 
 import "./contact-pages.styles.scss";
 
 class ContactPages extends React.Component {
+  state = {
+    name_contact: "",
+    lastname_contact: "",
+    email_contact: "",
+    phone_contact: "",
+    message_contact: "",
+    loading: false,
+  };
+
   componentDidMount() {
     document.title = this.props.title;
   }
 
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(
-      "Chức năng đang được xây dựng và hoàn thành trong thời gian sớm nhất"
-    );
+    const { name_contact, lastname_contact, email_contact } = this.state;
+    this.setState({
+      loading: true,
+    });
+    API.get(
+      `v1/sendmail?name=${
+        name_contact + lastname_contact
+      }&email=${email_contact}`
+    )
+      .then((res) => {
+        this.setState({
+          name_contact: "",
+          lastname_contact: "",
+          email_contact: "",
+          phone_contact: "",
+          message_contact: "",
+          loading: false,
+        });
+        alert("Gửi thành công");
+      })
+      .catch((err) => {
+        this.setState({
+          loading: false,
+        });
+      });
   };
 
   render() {
+    const {
+      name_contact,
+      lastname_contact,
+      email_contact,
+      phone_contact,
+      message_contact,
+      loading,
+    } = this.state;
     return (
       <React.Fragment>
         <BannerHeader title="Liên hệ" />
@@ -58,6 +105,8 @@ class ContactPages extends React.Component {
                             id="name_contact"
                             name="name_contact"
                             placeholder="vd: Nguyễn Văn"
+                            onChange={this.handleChange}
+                            value={name_contact}
                           />
                         </div>
                       </div>
@@ -70,6 +119,8 @@ class ContactPages extends React.Component {
                             id="lastname_contact"
                             name="lastname_contact"
                             placeholder="vd: Tèo"
+                            onChange={this.handleChange}
+                            value={lastname_contact}
                           />
                         </div>
                       </div>
@@ -85,6 +136,8 @@ class ContactPages extends React.Component {
                             name="email_contact"
                             className="form-control"
                             placeholder="vd: teo@gmail.com"
+                            onChange={this.handleChange}
+                            value={email_contact}
                           />
                         </div>
                       </div>
@@ -97,6 +150,8 @@ class ContactPages extends React.Component {
                             name="phone_contact"
                             className="form-control"
                             placeholder="vd: 0963232863"
+                            onChange={this.handleChange}
+                            value={phone_contact}
                           />
                         </div>
                       </div>
@@ -112,7 +167,8 @@ class ContactPages extends React.Component {
                             className="form-control"
                             placeholder="Nhập lời nhắn của bạn ở đây"
                             style={{ height: "200px" }}
-                            defaultValue={""}
+                            onChange={this.handleChange}
+                            value={message_contact}
                           />
                         </div>
                       </div>
@@ -121,9 +177,9 @@ class ContactPages extends React.Component {
                       <div className="col-sm-6">
                         <input
                           type="submit"
-                          defaultValue="Submit"
                           className="btn_1"
                           id="submit-contact"
+                          value={loading ? "Đang gửi..." : "Gửi"}
                         />
                       </div>
                     </div>
